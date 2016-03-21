@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.estimaprime.aplicativo.MainActivity" >
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:id="@+id/Login_email"
+        android:hint="@string/login_email"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/Login_senha"
+        android:hint="@string/login_password"
+        android:inputType="textPassword"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent">
+
+        <Button
+            android:text="Entrar"
+            android:id="@+id/btn_entrar"
+            android:clickable="true"
+            style="@style/ButtonGray"
+            android:layout_width="match_parent"
+            />
+
+        <Button
+            android:text="Esqueci minha Senha"
+            android:id="@+id/btn_forget"
+            android:clickable="true"
+            style="@style/ButtonSilver"
+            android:layout_width="match_parent"
+            />
+
+        <Button
+            android:text="Cadastro"
+            android:id="@+id/btn_sigup"
+            android:clickable="true"
+            style="@style/ButtonWhite"
+            android:layout_width="match_parent"
+            />
+    </LinearLayout>
+
+</LinearLayout>

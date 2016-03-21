@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:id="@+id/text_forget_email"
+        android:hint="@string/signup_email"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent">
+
+        <Button
+            android:text="Enviar Solicitação"
+            android:id="@+id/btn_forget_send"
+            android:clickable="true"
+            style="@style/ButtonBlue"
+            android:layout_width="match_parent"
+            />
+
+        <Button
+            android:text="Voltar"
+            android:id="@+id/btn_forget_back"
+            android:clickable="true"
+            style="@style/ButtonSilver"
+            android:layout_width="match_parent"
+            />
+    </LinearLayout>
+</LinearLayout>

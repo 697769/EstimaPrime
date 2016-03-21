@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/seekBar"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/gridView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:text="Trocar Empresa"
+            android:id="@+id/btn_select_enterprise"
+            android:clickable="true"
+            style="@style/ButtonBlue"
+            android:layout_width="match_parent"
+            />
+
+        <Button
+            android:text="Sair"
+            android:id="@+id/btn_back"
+            android:clickable="true"
+            style="@style/ButtonSilver"
+            android:layout_width="match_parent"
+            />
+    </LinearLayout>
+</LinearLayout>
