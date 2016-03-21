@@ -2,9 +2,9 @@
 Repository Publish
 
 #Índice
-20/03/2016   First Commit (Repository Publish)
-20/03/2016   First Aplication Diretory Commit (Version 1.0)
-20/03/2016   Application EstimaPrime Version 1.0
+20/03/2016   First Commit (Repository Publish)   
+20/03/2016   First Aplication Diretory Commit (Version 1.0)  
+20/03/2016   Application EstimaPrime Version 1.0   
 
 #Version 1.0
 - Activity's criadas
