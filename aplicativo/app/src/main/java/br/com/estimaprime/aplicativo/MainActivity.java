@@ -9,11 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import DAO.User;
 
 public class MainActivity extends Activity {
-    //DAL
-    DBManager dbManager = new DBManager(this);
+    //DAO
+    //DBManager dbManager = new DBManager(this);
+    User user = new User(this);
     //DATA SECTION
     private Button btn_entrar,btn_sigup,btn_forget;
     //METHODS
@@ -23,13 +24,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Criar usuario ADMIN
-        dbManager.addLogin("admin@admin","123");
+        user.addUser("admin@admin", "123");
         //CHANGES
         btn_entrar = (Button) findViewById(R.id.btn_entrar);
         btn_sigup = (Button) findViewById(R.id.btn_sigup);
         btn_forget = (Button) findViewById(R.id.btn_forget);
-        // Lista de Empresas
-        ArrayList<String> enterprise = new ArrayList<String>();
 
         btn_entrar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -73,7 +72,7 @@ public class MainActivity extends Activity {
             toast.show();
             return;
         }else{
-            user_email = dbManager.getEmail(login_email);
+            user_email = user.getEmail(login_email);
             if(!user_email){
                 Toast toast = Toast.makeText(this, "É necessario cadastro!", Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
@@ -81,7 +80,6 @@ public class MainActivity extends Activity {
                 return;
             }
         }
-
         //VALIDA SENHA
         if (login_senha.isEmpty()) {
             Toast toast = Toast.makeText(this, "Informe uma Senha", Toast.LENGTH_LONG);
@@ -89,7 +87,7 @@ public class MainActivity extends Activity {
             toast.show();
             return;
         } else {
-            user_password = dbManager.getPassword(login_email);
+            user_password = user.getPassword(login_email);
             if (!login_senha.equals(user_password)) {
                 Toast toast = Toast.makeText(this, "Senha invalida!", Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
