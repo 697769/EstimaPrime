@@ -7,6 +7,11 @@ Repository Publish
 20/03/2016   Application MobileEstimaPrime Version 1.0   
 25/04/2016   Application MobileEstimaPrime Version 2.0
 
+#Prioritarios
+- Criação de um serviço POST que recebera o EMAIL e SENHA, e retornara uma lista de empresas se validado  
+- Implementação dos serviços com a classe REST do app   
+- serviços que retornara os dados da empresa selecionada  
+
 #Version 1.0
 - Activity's criadas
 - Utilização do LayoutLinear
