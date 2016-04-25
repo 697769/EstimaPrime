@@ -4,7 +4,8 @@ Repository Publish
 #Índice
 20/03/2016   First Commit (Repository Publish)   
 20/03/2016   First Aplication Diretory Commit (Version 1.0)  
-20/03/2016   Application EstimaPrime Version 1.0   
+20/03/2016   Application MobileEstimaPrime Version 1.0   
+25/04/2016   Application MobileEstimaPrime Version 2.0
 
 #Version 1.0
 - Activity's criadas
@@ -28,3 +29,16 @@ Repository Publish
 - Função de retorna do banco se o usuario existe para validar E-mail
 - Função que recebe o email, e retorna a senha, para comparar com a senha digitada.
 
+#Version 2.0   
+- Implementação de Classes utilizando SQLite    
+- Implementação do Desenvolvimento MVC    
+- Criação dos pacotes para desenvolvimento MVC    
+- Analise e modelagem do Banco de Dados   
+- Verificação e integração com Banco de Dados através de um Web Service      
+- Pacote REST para comunicação com webservice   
+- Lista de Empresas do Banco de Dados.
+- Seleção de Empresas
+- Criação do Repositório para o produto EstimaPrime-webapp(site que preenchera a base de dados)
+- Criação do Repositório para a ferramenta de integração dos Sistemas (web service)   
+- Criação do Servico RPC para retornar se há conexão com a aplicação web service (ping)   
+- Criação de um serviço de teste REST(GET) com SQLite   
