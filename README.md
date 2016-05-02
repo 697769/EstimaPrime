@@ -6,6 +6,7 @@ Repository Publish
 20/03/2016   First Aplication Diretory Commit (Version 1.0)  
 20/03/2016   Application MobileEstimaPrime Version 1.0   
 25/04/2016   Application MobileEstimaPrime Version 2.0
+02/05/2016   Application MobileEstimaPrime Version 2.1  
 
 #Prioritarios
 - Criação de um serviço POST que recebera o EMAIL e SENHA, e retornara uma lista de empresas se validado  
