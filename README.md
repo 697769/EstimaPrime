@@ -57,3 +57,6 @@ Repository Publish
 - Salvando a empresa escolhida com shareed preferences  
 - Otimizações em relação ao banco de dados  
 - Criação de validações e testes para realizar procedimentos como: Logar,Selecionar empresa.  
+  
+#Version 2.2  
+- Home activity and layout changes (add type list item)   
