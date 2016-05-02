@@ -1,7 +1,9 @@
 package br.com.estimaprime.aplicativo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -13,7 +15,6 @@ import DAO.User;
 
 public class MainActivity extends Activity {
     //DAO
-    //DBManager dbManager = new DBManager(this);
     User user = new User(this);
     //DATA SECTION
     private Button btn_entrar,btn_sigup,btn_forget;
@@ -23,9 +24,12 @@ public class MainActivity extends Activity {
         //Definições Default
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //user.deleteAllUsers();
         //Criar usuario ADMIN
-        user.addUser("admin@admin", "123");
-        //CHANGES
+        //user.addUser("1@admin", "123");
+        //user.addUser("2@admin","123");
+        //user.addUser("3@admin","123");
+
         btn_entrar = (Button) findViewById(R.id.btn_entrar);
         btn_sigup = (Button) findViewById(R.id.btn_sigup);
         btn_forget = (Button) findViewById(R.id.btn_forget);
@@ -65,7 +69,6 @@ public class MainActivity extends Activity {
         EditText editText2 = (EditText) findViewById(R.id.Login_senha);
         String login_senha = editText2.getText().toString();
 
-        //VALIDA EMAIL
         if (login_email.isEmpty()) {
             Toast toast = Toast.makeText(this, "Informe um E-mail", Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
@@ -80,6 +83,7 @@ public class MainActivity extends Activity {
                 return;
             }
         }
+
         //VALIDA SENHA
         if (login_senha.isEmpty()) {
             Toast toast = Toast.makeText(this, "Informe uma Senha", Toast.LENGTH_LONG);
@@ -95,6 +99,12 @@ public class MainActivity extends Activity {
                 return;
             }
         }
+        //Salvar usuário logado
+        SharedPreferences sharedPreferences=getSharedPreferences("estimaprime", Context.MODE_PRIVATE); //salvar em modo privado!
+        SharedPreferences.Editor editor = sharedPreferences.edit(); //declarar o editor
+        editor.putInt("GLO_USUARIO",user.getIdUser(login_email)); //salvar o email logado
+        editor.commit(); //salvar dados no arquivo
+        //-------------------------------
         Intent intent = new Intent(MainActivity.this,Enterprises.class);
         startActivity(intent);
     }

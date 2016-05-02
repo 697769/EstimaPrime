@@ -16,7 +16,6 @@ public class SignUp extends Activity {
         setContentView(R.layout.activity_sign_up);
         //CHANGES
         btn_sigup = (Button) findViewById(R.id.btn_sigup);
-        btn_back = (Button) findViewById(R.id.btn_back);
         //METHODS
         btn_sigup.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -24,14 +23,5 @@ public class SignUp extends Activity {
                 //SIGNUP USER
             }
         });
-        btn_back.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(SignUp.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
 }

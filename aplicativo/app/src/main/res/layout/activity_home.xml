@@ -5,6 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textView"
+        android:layout_weight="1" />
+
     <SeekBar
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,7 +24,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="0.25"
         >
 
         <GridView
@@ -32,14 +40,6 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         >
-
-        <Button
-            android:text="Trocar Empresa"
-            android:id="@+id/btn_select_enterprise"
-            android:clickable="true"
-            style="@style/ButtonBlue"
-            android:layout_width="match_parent"
-            />
 
         <Button
             android:text="Sair"

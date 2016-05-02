@@ -6,7 +6,7 @@
     <LinearLayout
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="0.25"
+        android:layout_weight="1"
         android:layout_width="match_parent">
         <ListView
             android:layout_width="match_parent"
@@ -17,15 +17,8 @@
     <LinearLayout
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_weight="1"
+        android:layout_weight="10"
         android:layout_width="match_parent">
-
-        <Button
-            android:text="Selecionar Empresa"
-            android:id="@+id/btn_enteprises_select_enterprise"
-            android:clickable="true"
-            style="@style/ButtonBlue"
-            android:layout_width="match_parent"/>
 
         <Button
             android:text="Sair"

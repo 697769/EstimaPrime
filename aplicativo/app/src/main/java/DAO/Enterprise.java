@@ -1,5 +1,4 @@
-package DAO;
-
+package DAO; // Package
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,31 +7,48 @@ import java.util.ArrayList;
 
 import DAL.DBHelper;
 
-/**
- * Created by Victor on 05/04/2016.
- */
-public class Enterprise {
-
-    private DBHelper DAO_ENTERPRISE = null;
+public class Enterprise { // Classe para manutenção na tabela de empresas
+    private DBHelper DAO_ENTERPRISE = null; //instanciação do Objeto DBHelper(funções com banco de dados SQLite)
     // TODO: modify:05/04/2016 = CONSTRUCTOR's
     public Enterprise(Context context){
         if (DAO_ENTERPRISE == null){
             DAO_ENTERPRISE = new DBHelper(context);
         }
     }
-    // TODO: modify:05/04/2016 = INSERT's
+    // TODO: modify:05/04/2016 = ENTERPRISE_INSERT's
     public void addEnterprise(String new_name, int new_id_login){
-        String sql = "INSERT INTO enterprise(name,id_user) VALUES ('"+new_name+"',"+new_id_login+");";
+        String sql = "INSERT INTO enterprise(name,id_user) VALUES ('"+new_name.trim()+"',"+new_id_login+");";
         SQLiteDatabase db = DAO_ENTERPRISE.getWritableDatabase();
         db.execSQL(sql);
     }
-    // TODO: modify:05/04/2016 = DELETE's
+    // TODO: modify:05/04/2016 = ENTERPRISE_DELETE's
     public void deleteAllEnterprises(){
         String sql = "DELETE FROM enterprise";
         SQLiteDatabase db = DAO_ENTERPRISE.getWritableDatabase();
         db.execSQL(sql);
+        String sql2 = "DELETE FROM sqlite_sequence WHERE name='enterprise';";
+        db = DAO_ENTERPRISE.getWritableDatabase();
+        db.execSQL(sql2);
     }
-    // TODO: modify:05/04/2016 = ARRAY's
+    // TODO: modify:05/04/2016 = ENTERPRISE_SELECT's
+    public int getIdEnterprise(int enteprise){
+        int idEnterprise=0;
+        String sql = "SELECT id_enterprise,name,id_user FROM enterprise WHERE id_enterprise = '"+enteprise+"';";
+        int e=0;
+        SQLiteDatabase db = DAO_ENTERPRISE.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.moveToFirst()){
+            do{
+                e = cursor.getInt(0);
+                if (e == enteprise){ //empresa encontrada
+                    idEnterprise= cursor.getInt(0); //id como primeiro campo da consulta
+                    return idEnterprise;
+                }
+            }while(cursor.moveToNext());
+        }
+        return idEnterprise;
+    }
+    // TODO: modify:05/04/2016 = ENTERPRISE_ARRAY's
     public ArrayList<String> getAllEnterprises(){
         String sql = "SELECT * FROM enterprise;";
         SQLiteDatabase db = DAO_ENTERPRISE.getReadableDatabase();
@@ -47,7 +63,16 @@ public class Enterprise {
         }
         return enterprises;
     }
-
-
-
+    public ArrayList<String> getUserEnterprises(int user){
+        String sql = "SELECT id_enterprise,name,id_user FROM enterprise WHERE id_user = "+user+";";
+        SQLiteDatabase db = DAO_ENTERPRISE.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        ArrayList<String> enterprises = new ArrayList<String>();
+        if (cursor != null && cursor.moveToFirst()){
+            do{
+                enterprises.add(cursor.getString(0)+" - "+cursor.getString(1));
+            }while (cursor.moveToNext());
+        }
+        return enterprises;
+    }
 }

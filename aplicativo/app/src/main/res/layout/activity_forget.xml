@@ -23,13 +23,5 @@
             style="@style/ButtonBlue"
             android:layout_width="match_parent"
             />
-
-        <Button
-            android:text="Voltar"
-            android:id="@+id/btn_forget_back"
-            android:clickable="true"
-            style="@style/ButtonSilver"
-            android:layout_width="match_parent"
-            />
     </LinearLayout>
 </LinearLayout>
