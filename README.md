@@ -47,3 +47,12 @@ Repository Publish
 - Criação do Repositório para a ferramenta de integração dos Sistemas (web service)   
 - Criação do Servico RPC para retornar se há conexão com a aplicação web service (ping)   
 - Criação de um serviço de teste REST(GET) com SQLite   
+
+#Version 2.1
+- Alterações na classe DAO de Enterprise    
+- Alterações na classe DAO de User  
+- Usuário que esta logado passa a ser armazenado com shareed preferences  
+- Aparecendo apenas as empresas de acordo com o código do usuário   
+- Salvando a empresa escolhida com shareed preferences  
+- Otimizações em relação ao banco de dados  
+- Criação de validações e testes para realizar procedimentos como: Logar,Selecionar empresa.  
