@@ -12,6 +12,7 @@ Repository Publish
 - Valor total das notas de Entrada e Saída da Empres
 - Telas de Cadastros melhoradas
 - Organização e estruturação do código padrão java.
+- Disponibilização do .APK funcional (basico:versão beta)
 
 
 #Prioritarios
