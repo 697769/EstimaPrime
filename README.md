@@ -8,7 +8,7 @@ Repository Publish
 25/04/2016   Application MobileEstimaPrime Version 2.0
 02/05/2016   Application MobileEstimaPrime Version 2.1  
 
-#Pendentes pra Entrega Semestral 30/05/2016
+#Pendentes pra Entrega Semestral 09/06/2016
 - Valor total das notas de Entrada e Saída da Empres
 - Telas de Cadastros melhoradas
 - Organização e estruturação do código padrão java.
