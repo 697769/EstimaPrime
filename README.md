@@ -67,3 +67,11 @@ Repository Publish
   
 #Version 2.2  
 - Home activity and layout changes (add type list item)   
+
+#Version 2.3  
+- Criação do pacote Modelo
+- Criação do pacote Controle
+- Re-criação da classe do SQLite
+- Criação de 2 telas (adicionar empresa e adicionar nota)
+- Padronização modelo de programação java
+- Subdivizão das classes em metodos
