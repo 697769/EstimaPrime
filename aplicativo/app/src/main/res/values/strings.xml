@@ -1,12 +1,9 @@
 <resources>
     <string name="app_name">EstimaPrime</string>
-    <string name="title_activity_enterprises">Empresas</string>
     <string name="login_email">E-mail</string>
     <string name="login_password">Senha</string>
-    <string name="signup_name">Nome Completo</string>
-    <string name="signup_age">Data de Nascimento</string>
     <string name="signup_email">E-mail</string>
-    <string name="signup_confirm_email">Confirme o E-mail</string>
     <string name="signup_password">Senha</string>
-    <string name="signup_confirm_password">Confirme a Senha</string>
+    <string name="addEnterprise">Adicionar Empresa</string>
+
 </resources>

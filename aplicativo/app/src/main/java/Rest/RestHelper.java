@@ -1,4 +1,4 @@
-package Rest;
+package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RestHelper {
 
-    public static final String BASE_URL = "http://localhost:8888/apigility/ui#//module/EstimaPrime/1";
+    public static final String BASE_URL = "192.176.0.1";
 
     //public static RestHelper retrofit(){
 

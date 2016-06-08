@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+              android:orientation="vertical" android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
     <EditText
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:id="@+id/SigUpEmail"
-        android:hint="@string/signup_email"
-        android:clickable="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:inputType="textPassword"
-        android:id="@+id/SignUpPassword"
-        android:hint="@string/signup_password"
+        android:hint="@string/addEnterprise"
         android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -25,8 +17,8 @@
         android:layout_width="match_parent">
 
         <Button
-            android:text="Registrar"
-            android:id="@+id/btnSigup"
+            android:text="Salvar"
+            android:id="@+id/btnAddEnterprise"
             android:clickable="true"
             style="@style/ButtonBlue"
             android:layout_width="match_parent"

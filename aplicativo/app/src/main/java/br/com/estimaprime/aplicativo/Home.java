@@ -9,33 +9,39 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Home extends Activity {
-    //DATA SECTION
     private Button btn_select_enterprise,btn_back;
     public static final int Id_Enteprise=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //DEFAULT DECLARATIONS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        //CHANGES
-        String[] types = {"Entrada","Saída","Total"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,types);
-        final ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(adapter);
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(),android.R.layout.simple_list_item_1, types);
-        //getListView().setAdapter(adapter);
 
         btn_back = (Button) findViewById(R.id.btn_back);
-
+        preencherNotas();
+        verificaEmpresaSelecionada();
+        btn_back.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Voltar();
+            }
+        });
+    }
+    private void Voltar(){
+        Intent intent = new Intent(Home.this, Mainactivity.class);
+        startActivity(intent);
+    }
+    private void verificaEmpresaSelecionada(){
         TextView textView = (TextView) findViewById(R.id.textView);
         SharedPreferences sharedPreferences = getSharedPreferences("estimaprime", Context.MODE_PRIVATE);
+
         int Enterprise = sharedPreferences.getInt("GLO_ENTERPRISE",Id_Enteprise);
+
         if(Enterprise<=0){
             Toast toast = Toast.makeText(this, "Empresa não encontrada! " +Enterprise, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
@@ -43,14 +49,11 @@ public class Home extends Activity {
         }else{
             textView.setText("Código da Empresa: " +Enterprise);
         }
-
-        //METHODS
-        btn_back.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(Home.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+    }
+    private void preencherNotas(){
+        String[] types = {"Entrada","Saída","Total"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,types);
+        final ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adapter);
     }
 }
