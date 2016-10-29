@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical" android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEnterprise"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/txtAddEnterpriseIdUsuario"
+        android:layout_gravity="center_horizontal"/>
     <EditText
         android:inputType="text"
-        android:id="@+id/SigUpEmail"
+        android:id="@+id/txtAddEnterpriseName"
         android:hint="@string/addEnterprise"
         android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:textAlignment="center"/>
     <LinearLayout
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_width="match_parent">
-
         <Button
-            android:text="Salvar"
+            android:text="Adicionar Empresa"
             android:id="@+id/btnAddEnterprise"
             android:clickable="true"
             style="@style/ButtonBlue"
-            android:layout_width="match_parent"
-            />
+            android:layout_width="match_parent"/>
     </LinearLayout>
 </LinearLayout>

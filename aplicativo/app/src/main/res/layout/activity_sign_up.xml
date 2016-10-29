@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Signup"
+    android:textAlignment="center">
     <EditText
         android:inputType="textEmailAddress"
         android:id="@+id/SigUpEmail"
-        android:hint="@string/signup_email"
+        android:hint="@string/hintEmail"
         android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:textAlignment="center"/>
     <EditText
         android:inputType="textPassword"
         android:id="@+id/SignUpPassword"
-        android:hint="@string/signup_password"
+        android:hint="@string/hintPassword"
         android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:textAlignment="center"/>
     <LinearLayout
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_width="match_parent">
-
         <Button
             android:text="Registrar"
-            android:id="@+id/btnSigup"
+            android:id="@+id/btnSigup2"
             android:clickable="true"
             style="@style/ButtonBlue"
             android:layout_width="match_parent"

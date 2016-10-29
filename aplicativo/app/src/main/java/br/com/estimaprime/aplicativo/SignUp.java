@@ -3,19 +3,16 @@ package br.com.estimaprime.aplicativo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import Controle.User;
-import Modelo.UserM;
+
+import dao.UserDAO;
+import modelo.User;
 
 public class Signup extends Activity {
-
-    Controle.User User = new User(this);
-
-    private Button btnSigup;
+    private Button btnSigup2;
     private String signupEmail,signupSenha;
     private EditText editTextEmail,editTextSenha;
 
@@ -24,53 +21,47 @@ public class Signup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        btnSigup = (Button) findViewById(R.id.btn_sigup);
+        btnSigup2 = (Button) findViewById(R.id.btnSigup2);
         editTextEmail = (EditText) findViewById(R.id.SigUpEmail);
         editTextSenha = (EditText) findViewById(R.id.SignUpPassword);
 
-        btnSigup.setOnClickListener(new View.OnClickListener(){
+        btnSigup2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                if (Cadastrar()==true){
-                    Voltar();
-                }else { return; }
+                if (Cadastrar()){ Voltar(); }
             }
         });
     }
-    private boolean Cadastrar(){
-        atribuirEmailSenha();
-        if (verificaEmailSenhaVazios()==false){
-            Toast toast = Toast.makeText(Signup.this, "Informe um E-mail e uma Senha válidos!", Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
-            toast.show();
-        }else
-            if (User.verifyEmail(signupEmail)==false){
-                Toast toast = Toast.makeText(Signup.this, "Opção de E-mail indisponível!", Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
-                toast.show();
-            }else{
-                UserM usuario = new UserM();
-                usuario.setEmail(signupEmail);
-                usuario.setPassword(signupSenha);
-                User.insertUser(usuario);
-                return true;
-            }
-        return false;
-    }
-    private void atribuirEmailSenha(){
+    protected boolean Cadastrar(){
         signupEmail = editTextEmail.getText().toString().trim();
         signupSenha = editTextSenha.getText().toString().trim();
-    }
-    private boolean verificaEmailSenhaVazios(){
-        if (signupEmail.isEmpty() || signupSenha.isEmpty()) {
+
+        UserDAO userDAO = new UserDAO(getApplicationContext());
+
+        if (signupEmail.equals("") || signupSenha.equals("")) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Informe um E-mail e uma Senha válidos!", Toast.LENGTH_LONG);
+            toast.setGravity(android.view.Gravity.CENTER | android.view.Gravity.CENTER, 0, 0);
+            toast.show();
             return false;
-        }else
-            return true;
+        }else if (!userDAO.verifyEmail(signupEmail)){
+                Toast toast = Toast.makeText(getApplicationContext(), "Opção de E-mail indisponível!", Toast.LENGTH_LONG);
+                toast.setGravity(android.view.Gravity.CENTER | android.view.Gravity.CENTER, 0, 0);
+                toast.show();
+                return false;
+            }else{
+                User usuario = new User();
+                usuario.setEmail(signupEmail);
+                usuario.setPassword(signupSenha);
+                userDAO.insertUser(usuario);
+                Toast toast = Toast.makeText(getApplicationContext(), "Cadastro Efetuado com Sucesso!", Toast.LENGTH_LONG);
+                toast.setGravity(android.view.Gravity.CENTER | android.view.Gravity.CENTER, 0, 0);
+                toast.show();
+                return true;
+        }
     }
-    private void Voltar(){
+
+    protected void Voltar(){
         Intent intent = new Intent(Signup.this, Mainactivity.class);
         startActivity(intent);
-        kill_activity();
     }
-    private void kill_activity() { finish(); }
 }

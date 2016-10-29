@@ -15,42 +15,58 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import Controle.Enterprise;
+import dao.EnterpriseDAO;
 
 public class Enterprises extends Activity {
 
-    //DATA SECTION
-    private Button btn_enterprises_exit;
-    public static final int Id_Usuario=0;
-    Controle.Enterprise Enterprise = new Enterprise(this);
-    ArrayList<String> enterpriseList = new ArrayList<String>();
-
+    private Button btnEnterprisesExit, btnAddEnterprise;
+    private int IdUsuario=0;
+    private ArrayList<String> enterpriseList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enterprises);
 
-        btn_enterprises_exit = (Button) findViewById(R.id.btn_enterprises_exit);
+        btnAddEnterprise = (Button) findViewById(R.id.btnEnterprisesAddEnterprise);
+        btnEnterprisesExit = (Button) findViewById(R.id.btn_enterprises_exit);
 
-        //Retornar as empresas do banco
-            //enterpriseList = enterprise.getAllEnterprises();
-            SharedPreferences sharedPreferences = getSharedPreferences("estimaprime", Context.MODE_PRIVATE);
-            int UsuarioLogado = sharedPreferences.getInt("GLO_USUARIO",Id_Usuario);
-            if (UsuarioLogado <= 0){
-                Toast toast = Toast.makeText(Enterprises.this, "Usuário não encontrado! "+UsuarioLogado, Toast.LENGTH_LONG);
+        carregarEmpresasDoUsuario();
+
+        btnAddEnterprise.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(Enterprises.this, AddEnterprise.class);
+                startActivity(intent);
+            }
+        });
+        btnEnterprisesExit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(Enterprises.this, Mainactivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    protected void carregarEmpresasDoUsuario(){
+        SharedPreferences sharedPreferences = getSharedPreferences("estimaprime", Context.MODE_PRIVATE);
+        int UsuarioLogado = sharedPreferences.getInt("GLO_USUARIO",IdUsuario);
+
+        if (UsuarioLogado <= 0){
+            Toast toast = Toast.makeText(Enterprises.this, "Usuário não encontrado! "+UsuarioLogado, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+            toast.show();
+        } else {
+
+            EnterpriseDAO empDAO = new EnterpriseDAO(getApplicationContext());
+            enterpriseList = empDAO.getUserEnterprises(UsuarioLogado);
+
+            if (enterpriseList==null){
+                Toast toast = Toast.makeText(Enterprises.this, "Nenhuma empresa encontrada!", Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
                 toast.show();
             } else {
-//                  enterpriseList = enterprise.getAllEnterprises();
-                //enterpriseList = Enterprise.getUserEnterprises(UsuarioLogado);
-
-                if (enterpriseList==null){
-                    Toast toast = Toast.makeText(Enterprises.this, "Nenhuma empresa encontrada!", Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
-                    toast.show();
-                } else {
-                    // Adicionar as empresas no list
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,enterpriseList);
                     final ListView listView = (ListView) findViewById(R.id.listView_enterprises);
                     listView.setAdapter(adapter);
@@ -59,30 +75,28 @@ public class Enterprises extends Activity {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                     String empresa = (String)listView.getItemAtPosition(position);
-                                    //Salva a empresa selecionada
-                                    SharedPreferences sharedPreferences=getSharedPreferences("estimaprime", Context.MODE_PRIVATE); //salvar em modo privado!
-                                    SharedPreferences.Editor editor = sharedPreferences.edit(); //declarar o editor
 
-                                    //editor.putInt("GLO_ENTERPRISE", Enterprise.getIdEnterprise(Integer.parseInt(empresa.substring(0,1)))); //salvar a enterprise selecionada
+                                    SalvarEmpresaSelecionada(empresa);
 
-                                    editor.commit(); //salvar dados no arquivo
-                                    //Chama a tela da empresa
-                                    Intent intent = new Intent(Enterprises.this, Home.class);
-                                    startActivity(intent);
+                                    StartHome();
                                 }
                             }
                     );
-                }
             }
-        btn_enterprises_exit.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(Enterprises.this, Mainactivity.class);
-                startActivity(intent);
-            }
-        });
+        }
     }
 
-    private void enterpriseSelection(){
-   }
+    protected void SalvarEmpresaSelecionada(String emp){
+        //Salva a empresa selecionada
+        SharedPreferences sharedPreferences=getSharedPreferences("estimaprime", Context.MODE_PRIVATE); //salvar em modo privado!
+        SharedPreferences.Editor editor = sharedPreferences.edit(); //declarar o editor
+        EnterpriseDAO empDAO2 = new EnterpriseDAO(getApplicationContext());
+        editor.putInt("GLO_ENTERPRISE", empDAO2.getIdEnterprise(Integer.parseInt(emp.substring(0,1)))); //salvar a enterprise selecionada//
+        editor.commit(); //salvar dados no arquivo
+    }
+
+    protected void StartHome(){
+        Intent intent = new Intent(Enterprises.this, Home.class);
+        startActivity(intent);
+    }
 }

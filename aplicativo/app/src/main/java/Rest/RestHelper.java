@@ -1,3 +1,7 @@
+/*
+ * Copyright EstimaPrime(c) 2016 - By Victor Sodré 528803
+ */
+
 package rest;
 
 import com.google.gson.Gson;
@@ -6,14 +10,11 @@ import com.google.gson.GsonBuilder;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by Victor on 20/04/2016.
- */
 public class RestHelper {
 
-    public static final String BASE_URL = "192.176.0.1";
+    public static final String BASE_URL = "http://172.28.15.17:8080/";
 
-    //public static RestHelper retrofit(){
+    public static rest.EstimaPrime retrofit(){
 
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-mm-dd'T'hh:mm:ssZ")
@@ -23,5 +24,8 @@ public class RestHelper {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
-    //}
+
+        return retrofit.create(rest.EstimaPrime.class);
+
+    }
 }

@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_width="match_parent">
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/listView_enterprises" />
+        tools:context=".Enterprises"
+        >
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent">
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/listView_enterprises"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="10"
+            android:layout_width="match_parent">
+            <Button
+                android:text="Adicionar Empresa"
+                android:id="@+id/btnEnterprisesAddEnterprise"
+                android:clickable="true"
+                style="@style/ButtonBlue"
+                android:layout_width="match_parent"
+                />
+            <Button
+                android:text="Logoff"
+                android:id="@+id/btn_enterprises_exit"
+                android:clickable="true"
+                style="@style/ButtonSilver"
+                android:layout_width="match_parent"
+            />
+        </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="10"
-        android:layout_width="match_parent">
-
-        <Button
-            android:text="Sair"
-            android:id="@+id/btn_enterprises_exit"
-            android:clickable="true"
-            style="@style/ButtonSilver"
-            android:layout_width="match_parent"/>
-    </LinearLayout>
-</LinearLayout>

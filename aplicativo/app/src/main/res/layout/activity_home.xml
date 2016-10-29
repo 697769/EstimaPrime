@@ -3,35 +3,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:textAlignment="center">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/textView"
-        android:layout_weight="1" />
+        android:id="@+id/txtEmpresaSelecionada"
+        android:layout_weight="1.5"
+        android:textAlignment="center"/>
 
     <SeekBar
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/seekBar"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:layout_gravity="center_horizontal" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.25"
+        android:layout_weight="1"
         >
-
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/listView" />
+            android:id="@+id/listView"
+            android:textAlignment="center"/>
     </LinearLayout>
 
     <LinearLayout
@@ -40,6 +42,27 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         >
+        <Button
+            android:text="Adicionar Nota"
+            android:id="@+id/btnHomeAddNote"
+            android:clickable="true"
+            style="@style/ButtonBlue"
+            android:layout_width="match_parent"
+            />
+        <Button
+            android:text="Selecionar Empresa"
+            android:id="@+id/btnSelectEnterprise"
+            android:clickable="true"
+            style="@style/ButtonWhite"
+            android:layout_width="match_parent"
+            />
+        <Button
+            android:text="Alterar foto da empresa"
+            android:id="@+id/btnChangePictureEnterprise"
+            android:clickable="true"
+            style="@style/ButtonWhite"
+            android:layout_width="match_parent"
+            />
 
         <Button
             android:text="Sair"
